@@ -1,0 +1,13 @@
+services:
+  betting-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: betting-api
+    ports:
+      - "8080:8080"
+    environment:
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      BETTING_LOG_PATH: ${BETTING_LOG_PATH:-artifacts/events.jsonl}
+      BETTING_RANDOM_SEED: ${BETTING_RANDOM_SEED:-42}
+    restart: unless-stopped
