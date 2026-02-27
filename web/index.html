@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Betting Intelligence Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="background-shape bg-1"></div>
+  <div class="background-shape bg-2"></div>
+
+  <main class="container">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">Production OOP Refactor</p>
+        <h1>Betting Intelligence Console</h1>
+        <p class="subtitle">Interactive betting control plane with draw simulation, region-based prize models, and live operational metrics.</p>
+      </div>
+      <div class="hero-metrics">
+        <div>
+          <span>Pending Bet</span>
+          <strong id="pendingStatus">none</strong>
+        </div>
+        <div>
+          <span>Latest Prize</span>
+          <strong id="latestPrize">€0</strong>
+        </div>
+        <div>
+          <span>Matches</span>
+          <strong id="latestMatches">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card control-card">
+        <h2>Place Bet</h2>
+        <p>Enter 4 unique numbers between 1 and 99.</p>
+        <div class="number-row">
+          <input id="n1" type="number" min="1" max="99" placeholder="n1" />
+          <input id="n2" type="number" min="1" max="99" placeholder="n2" />
+          <input id="n3" type="number" min="1" max="99" placeholder="n3" />
+          <input id="n4" type="number" min="1" max="99" placeholder="n4" />
+        </div>
+        <select id="regionSelect"></select>
+        <button id="placeBetBtn" class="btn primary">Place Bet</button>
+      </article>
+
+      <article class="card control-card">
+        <h2>Draw & Session</h2>
+        <p>Process draw against the pending bet or reset the session.</p>
+        <div class="button-row">
+          <button id="runDrawBtn" class="btn accent">Run Draw</button>
+          <button id="resetBtn" class="btn ghost">Reset Session</button>
+          <button id="refreshBtn" class="btn ghost">Refresh</button>
+        </div>
+        <p id="feedback" class="feedback">Ready.</p>
+      </article>
+
+      <article class="card control-card">
+        <h2>Prize Matrix</h2>
+        <p id="regionSummary">Select a region to inspect prize tiers.</p>
+        <div id="prizeMatrix" class="matrix"></div>
+      </article>
+    </section>
+
+    <section class="grid two-columns">
+      <article class="card">
+        <h2>Current State</h2>
+        <div id="pendingPanel" class="state-block"></div>
+        <h3>Latest Draw</h3>
+        <div id="drawNumbers" class="balls"></div>
+        <div id="matchedNumbers" class="balls muted"></div>
+      </article>
+
+      <article class="card">
+        <h2>Operational Metrics</h2>
+        <div id="metricsPanel" class="metrics-grid"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Draw History</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time (UTC)</th>
+              <th>Region</th>
+              <th>Ticket</th>
+              <th>Draw</th>
+              <th>Matches</th>
+              <th>Prize</th>
+            </tr>
+          </thead>
+          <tbody id="historyTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
